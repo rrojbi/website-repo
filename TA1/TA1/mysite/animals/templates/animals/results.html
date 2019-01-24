@@ -1,0 +1,15 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'animals/style0.css' %}">
+
+<h1 style="color:#0d11ff" ;>{{ animal.id_animal }}</h1>
+
+
+
+<p style="color:#0d11ff" ;>L'animal est {{animal.Etat }} et il se trouve dans le lieu : {{animal.Lieu }}</p>
+
+
+<a href="/animals/">Choisir encore?</a>
+<p> </p>
+
+<i style="color:#0d11ff" ;>Attention ! : Si jamais l'état et le lieu de l'animal séléctionné n'ont <br> pas changés c'est sûrement que le lieu d'arrivé est occupé ou bien que <br> l'animal n'a pas envie de faire cette action.</i>

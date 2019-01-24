@@ -1,0 +1,35 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'animals/style.css' %}">
+
+<h1>{{ "Animalerie (la meilleure <3 ) de Rania et Anaëlle "}}</h1>
+
+<p> Découvrez la petite vie actuelle de nos animaux :</p>
+{% for a in animals_list %}
+<i style="color:#e71cff" ;>{{a.id_animal}} est {{a.Etat }} et il se trouve dans le lieu : {{a.Lieu }} <br> </i>
+
+{% endfor %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'animals:vote'  %}" method="post">
+{% csrf_token %}
+    <p>Choisissez un animal :</p>
+<div id = "a">
+{% for a in animals_list %}
+
+    <input type="radio" name="a" id="a{{ forloop.counter }}" value="{{ a.id }}">
+    <label for="a{{ forloop.counter }}">{{ a.id_animal }}</label><br>
+
+{% endfor %}
+</div>
+     <p>Choisissez une action :</p>
+<div id = "b">
+
+{% for b in actions_list %}
+    <input type="radio" name="b" id="b{{ forloop.counter }}" value="{{ b.id }}">
+    <label for="b{{ forloop.counter }}">{{ b.Action_text }}</label><br>
+{% endfor %}
+</div>
+    <p> </p>
+<input type="submit" value="Choisir">
+</form>
